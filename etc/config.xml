@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Scandi_MagicZoom
+ * @author Janis Kozulis <info@scandiweb.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <scandi_magiczoom>
+            <slider_settings>
+                <autoslide_enabled>1</autoslide_enabled>
+                <autoslide_timeout>5000</autoslide_timeout>
+                <show_arrows>1</show_arrows>
+                <show_dots>0</show_dots>
+                <infinite>1</infinite>
+                <thumb_count>3</thumb_count>
+                <video_popup>0</video_popup>
+            </slider_settings>
+            <zoom_settings>
+                <zoom_enabled>1</zoom_enabled>
+                <zoom_type>window</zoom_type>
+            </zoom_settings>
+        </scandi_magiczoom>
+    </default>
+</config>

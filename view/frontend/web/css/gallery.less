@@ -1,0 +1,165 @@
+/**
+ * Scandi_MagicZoom
+ * @author Janis Kozulis <info@scandiweb.com>
+ */
+
+.mz-gallery-container {
+    max-width: 100%;
+    position: relative;
+
+    .slick-slide-wrap img {
+        width: 100%;
+    }
+
+    .loading-mask {
+        display: none;
+        padding: 0 0 50%;
+        position: static;
+    }
+
+    .loader > img {
+        position: absolute;
+    }
+
+    ._block-content-loading + .loading-mask {
+        display: block;
+    }
+
+    .slick-prev,
+    .slick-next {
+        background: rgba(255,255,255,0.2);
+        border: none;
+        height: auto;
+        padding: 10px;
+        width: auto;
+        z-index: 1;
+
+        &:before {
+            background-image: url(../img/gallery.png);
+            content: '';
+            display: block;
+            height: 47px;
+            width: 25px;
+        }
+    }
+
+    .slick-prev {
+        left: 5px;
+
+        &:before {
+            background-position: -108px -97px;
+        }
+    }
+
+    .slick-next {
+        right: 5px;
+
+        &:before {
+            background-position: -187px -97px;
+        }
+    }
+
+    .slick-video-slide {
+        position: relative;
+
+        &:after {
+            background: url(../img/gallery.png) -82px -162px;
+            bottom: 0;
+            content: '';
+            cursor: pointer;
+            height: 100px;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 12px;
+            width: 100px;
+        }
+
+        &.video-loaded > img {
+            visibility: hidden;
+        }
+    }
+}
+
+.mz-gallery-thumbs {
+    .slick-prev,
+    .slick-next {
+        padding: 5px;
+
+        &:before {
+            height: 19px;
+            width: 11px;
+        }
+    }
+
+    .slick-prev {
+        left: 5px;
+
+        &:before {
+            background-position: -35px -271px;
+        }
+    }
+
+    .slick-next {
+        right: 5px;
+
+        &:before {
+            background-position: -35px -351px;
+        }
+    }
+
+    .slick-slide {
+        text-align: center;
+
+        img {
+            display: inline-block;
+        }
+    }
+
+    .slick-video-slide:after {
+        background-position: -18px -187px;
+        cursor: default;
+        height: 27px;
+        top: 0;
+        width: 45px;
+    }
+}
+
+.mz-product-video {
+    bottom: 0;
+    height: 75%;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+}
+.mz-product-video iframe {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.mz-video-modal {
+    .modal-header {
+        display: none;
+    }
+    .modal-content {
+        padding: 0 0 56%;
+    }
+    .mz-product-video {
+        height: 100%;
+    }
+}
+
+/* Slick slider fix for M2 base theme */
+@media only screen and (max-width: 767px) {
+    .catalog-product-view .column.main {
+        max-width: 100%;
+    }
+}

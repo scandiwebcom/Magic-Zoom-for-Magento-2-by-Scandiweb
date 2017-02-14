@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Scandi_MagicZoom
+ * @author Janis Kozulis <info@scandiweb.com>
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Scandi_MagicZoom/lib/slick/slick.css"/>
+        <css src="Scandi_MagicZoom/lib/slick/slick-theme.css"/>
+        <css src="Scandi_MagicZoom/css/gallery.css"/>
+    </head>
+    <body>
+        <referenceBlock name="product.info.media.image" remove="true"/>
+        <referenceBlock name="product.info.media.video" remove="true"/>
+        <referenceContainer name="product.info.media">
+            <block class="Scandi\MagicZoom\Block\Gallery" name="magiczoom.pdp.gallery" template="Scandi_MagicZoom::product/view/gallery.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

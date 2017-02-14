@@ -1,0 +1,76 @@
+<?php
+/**
+ * Scandi_MagicZoom
+ * @author Janis Kozulis <info@scandiweb.com>
+ */
+
+/**
+ * Product media data template
+ *
+ * @var $block \Scandi\MagicZoom\Block\Gallery
+ */
+?>
+<div class="mz-gallery-container">
+    <div class="mz-gallery-placeholder gallery-placeholder _block-content-loading" data-gallery-role="gallery-placeholder">
+    </div>
+    <div data-role="loader" class="loading-mask">
+        <div class="loader">
+            <img src="<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('images/loader-1.gif'); ?>"
+                alt="<?php /* @escapeNotVerified */ echo __('Loading...') ?>">
+        </div>
+    </div>
+    <div class="mz-gallery-thumbs-wrap"></div>
+</div>
+<!--Fix for jumping content. Loader must be the same size as gallery.-->
+<script type="text/javascript">
+    var config = {
+        'width': <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_medium', 'width'); ?>,
+        'height': <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_medium', 'height'); ?>
+    },
+        loader = document.querySelectorAll('.mz-gallery-container [data-role="loader"]')[0];
+    loader.style.paddingBottom = ( config.height / config.width * 100) + "%";
+</script>
+<script type="text/x-magento-init">
+    {
+        "[data-gallery-role=gallery-placeholder]": {
+            "Scandi_MagicZoom/js/gallery": {
+                "data": <?php echo $block->getGalleryImagesJson(); ?>,
+                "sliderSettings": {
+                    "videoPopup": <?php echo $block->getConfigVal('scandi_magiczoom/slider_settings/video_popup'); ?>,
+                    "options": { <?php /* Options will be passed directly to Slick, can add additional settings here */ ?>
+                        "autoplay": <?php echo $block->getConfigVal('scandi_magiczoom/slider_settings/autoslide_enabled'); ?>,
+                        "autoplaySpeed": <?php echo $block->getConfigVal('scandi_magiczoom/slider_settings/autoslide_timeout'); ?>,
+                        "slidesToShow": 1,
+                        "slidesToScroll": 1,
+                        "dots": <?php echo $block->getConfigVal('scandi_magiczoom/slider_settings/show_dots', true); ?>,
+                        "arrows": <?php echo $block->getConfigVal('scandi_magiczoom/slider_settings/show_arrows', true); ?>,
+                        "infinite": <?php echo $block->getConfigVal('scandi_magiczoom/slider_settings/infinite', true); ?>
+                    }
+                },
+                "thumbsSettings": {
+                    "options": { <?php /* Options will be passed directly to Slick, can add additional settings here */ ?>
+                        "slidesToShow": <?php echo $block->getConfigVal('scandi_magiczoom/slider_settings/thumb_count'); ?>,
+                        "slidesToScroll": 1,
+                        "autoplay": false,
+                        "focusOnSelect": true,
+                        "dots": false,
+                        "arrows": <?php echo $block->getConfigVal('scandi_magiczoom/slider_settings/show_arrows', true); ?>,
+                        "infinite": <?php echo $block->getConfigVal('scandi_magiczoom/slider_settings/infinite', true); ?>
+                    }
+                },
+                "zoomSettings": {
+                    "zoomEnabled": <?php echo $block->getConfigVal('scandi_magiczoom/zoom_settings/zoom_enabled'); ?>,
+                    "autoType": true,
+                    "options": { <?php /* Options will be passed directly to ElevateZoom, can add additional settings here */ ?>
+                        "zoomType": "<?php echo $block->getConfigVal('scandi_magiczoom/zoom_settings/zoom_type'); ?>",
+                        "zoomWindowOffetx": 10
+                    }
+                },
+                "videoSettings": {
+                    "showRelated": false,
+                    "videoAutoRestart": false
+                }
+            }
+        }
+    }
+</script>

@@ -1,0 +1,22 @@
+{
+  "name": "scandiweb/module-magiczoom",
+  "description": "Scandiweb MagicZoom - Replaces Magento 2 native gallery with Slick and ElevateZoom",
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "require": {
+    "magento/module-catalog": "*",
+    "magento/module-product-video": "*"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Scandiweb\\MagicZoom\\": ""
+    }
+  }
+}
