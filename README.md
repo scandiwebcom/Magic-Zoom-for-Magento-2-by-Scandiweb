@@ -5,7 +5,7 @@ Replaces Magento 2 native slider/zoom with Slick slider and ElevateZoom plugins.
 ## Installation
 
 ```
-composer config repositories.module-magiczoom git git@bitbucket.org:scandiwebassets/magiczoom.git
+composer config repositories.module-magiczoom git git@github.com:scandiwebcom/Magic-Zoom-for-Magento-2-by-Scandiweb.git
 composer require scandiweb/module-magiczoom:1.0.0
 php -f bin/magento setup:upgrade
 ```
