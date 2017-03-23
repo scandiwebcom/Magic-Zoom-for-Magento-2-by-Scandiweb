@@ -37,6 +37,7 @@
                 "data": <?php echo $block->getGalleryImagesJson(); ?>,
                 "sliderSettings": {
                     "videoPopup": <?php echo $block->getConfigVal('scandi_magiczoom/slider_settings/video_popup'); ?>,
+                    "imagePopup": <?php echo $block->getConfigVal('scandi_magiczoom/slider_settings/image_popup'); ?>,
                     "options": { <?php /* Options will be passed directly to Slick, can add additional settings here */ ?>
                         "autoplay": <?php echo $block->getConfigVal('scandi_magiczoom/slider_settings/autoslide_enabled'); ?>,
                         "autoplaySpeed": <?php echo $block->getConfigVal('scandi_magiczoom/slider_settings/autoslide_timeout'); ?>,

@@ -41,7 +41,11 @@
                     <label>Thumbnail Count</label>
                     <comment>Number of visible thumbnails</comment>
                 </field>
-                <field id="video_popup" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="image_popup" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image Popup</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="video_popup" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Play Video in Popup</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>

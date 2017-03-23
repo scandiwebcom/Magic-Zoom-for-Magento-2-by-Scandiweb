@@ -129,6 +129,9 @@
 .mz-video-modal .mz-product-video {
   height: 100%;
 }
+.zoomContainer {
+  z-index: 9999;
+}
 /* Slick slider fix for M2 base theme */
 @media only screen and (max-width: 767px) {
   .catalog-product-view .column.main {

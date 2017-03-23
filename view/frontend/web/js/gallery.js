@@ -6,10 +6,11 @@ define([
     'jquery',
     'slick',
     'elevatezoom',
+    'fancybox',
     'uiClass',
     'Magento_ProductVideo/js/load-player',
     'Magento_Ui/js/modal/modal'
-], function ($, slick, elevatezoom, Class) {
+], function ($, slick, elevatezoom, fancybox, Class) {
     'use strict';
 
     /**
@@ -161,7 +162,10 @@ define([
         defaults: {
             data: [],
             sliderSettings: {
-                options: {}
+                options: {},
+            },
+            lightBoxOptions: {
+                options: {},
             },
             thumbsSettings: {
                 options: {}
@@ -215,24 +219,56 @@ define([
             this.sliderElement.addClass(this.GALLERY_CLASS);
             this.sliderElement.slick(this.config.sliderSettings.options);
 
+            if (this.config.sliderSettings.imagePopup) {
+                if (this.isTouchEnabled) {
+                    self.imageModalPopup('taphold');
+                } else {
+                    self.imageModalPopup('click');
+                }
+            }
+
             // Add slides
             this.addSlides();
 
             if (this.isZoomEnabled()) {
                 self.initZoom(this.sliderElement);
-                self.createVideoContainer();
-
-                this.sliderElement.on('afterChange', function (event, slick, currentSlide) {
-                    self.initZoom($(event.target));
-                    self.unloadVideoPlayer();
-                    self.createVideoContainer();
-                });
+                self.videoContainer();
 
                 $(document).on('mouseover', '.zoomContainer', $.proxy(this.pauseSlider, this));
                 $(document).on('mouseout', '.zoomContainer', $.proxy(this.playSlider, this));
+            } else {
+                self.videoContainer();
             }
 
             this.initThumbs();
+        },
+
+        /**
+         * Inits video container
+         */
+        videoContainer: function () {
+            var self = this;
+            self.createVideoContainer();
+
+            this.sliderElement.on('afterChange', function (event, slick, currentSlide) {
+                self.initZoom($(event.target));
+                self.unloadVideoPlayer();
+                self.createVideoContainer();
+            });
+        },
+
+        /**
+         * Image modal popup
+         *
+         * @returns {boolean}
+         */
+        imageModalPopup: function (event) {
+            $(document).on(event, '.slick-current', function(e) {
+                var visibleLinks = $('.slick-slide-wrap:not(.slick-cloned)');
+                $.fancybox.open( visibleLinks, {}, visibleLinks.index( this ) );
+
+                return false;
+            });
         },
 
         /**
@@ -242,7 +278,9 @@ define([
             var self = this;
             $.each(this.config.data, function (index, imageData) {
                 var _className = (self.isVideo(imageData)) ? 'slick-video-slide' : '',
-                     _slide = '<div class="slick-slide-wrap '+ _className +'" data-data-index="' + index + '"><img data-media-type="' + imageData['mediaType'] + '" data-zoom-image="'+ imageData['full'] +'" src="' + imageData['img'] + '"/></div>';
+                    _hrefLink = (self.isVideo(imageData)) ? imageData['videoUrl'] : imageData['full'],
+                    _fancyBox = (!self.isTouchEnabled & self.config.sliderSettings.imagePopup) ? 'href="' + _hrefLink + '"' : '',
+                    _slide = '<div class="slick-slide-wrap '+ _className +'" data-data-index="' + index + '" ' + _fancyBox + '><img data-media-type="' + imageData['mediaType'] + '" data-zoom-image="'+ imageData['full'] +'" src="' + imageData['img'] + '"/></div>';
 
                 self.sliderElement.slick('slickAdd', _slide);
             });
@@ -429,7 +467,10 @@ define([
                 data.id +
                 '" data-width="100%" data-height="100%"></div>'
             );
-            this.setVideoEvents(currentSlide);
+
+            if (!this.config.sliderSettings.imagePopup) {
+                this.setVideoEvents(currentSlide);
+            }
         },
 
         /**

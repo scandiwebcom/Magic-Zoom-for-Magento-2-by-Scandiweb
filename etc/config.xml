@@ -15,6 +15,7 @@
                 <show_dots>0</show_dots>
                 <infinite>1</infinite>
                 <thumb_count>3</thumb_count>
+                <image_popup>0</image_popup>
                 <video_popup>0</video_popup>
             </slider_settings>
             <zoom_settings>

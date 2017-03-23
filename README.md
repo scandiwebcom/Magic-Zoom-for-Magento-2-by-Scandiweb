@@ -1,6 +1,6 @@
 # Scandiweb MagicZoom
 
-Replaces Magento 2 native slider/zoom with Slick slider and ElevateZoom plugins.
+Replaces Magento 2 native slider/zoom  with Slick slider, fancybox and ElevateZoom plugins.
 
 ## Installation
 
