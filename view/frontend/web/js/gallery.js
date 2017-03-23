@@ -162,10 +162,7 @@ define([
         defaults: {
             data: [],
             sliderSettings: {
-                options: {},
-            },
-            lightBoxOptions: {
-                options: {},
+                options: {}
             },
             thumbsSettings: {
                 options: {}
