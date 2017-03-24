@@ -276,7 +276,7 @@ define([
             $.each(this.config.data, function (index, imageData) {
                 var _className = (self.isVideo(imageData)) ? 'slick-video-slide' : '',
                     _hrefLink = (self.isVideo(imageData)) ? imageData['videoUrl'] : imageData['full'],
-                    _fancyBox = (!self.isTouchEnabled & self.config.sliderSettings.imagePopup) ? 'href="' + _hrefLink + '"' : '',
+                    _fancyBox = (self.config.sliderSettings.imagePopup) ? 'href="' + _hrefLink + '"' : '',
                     _slide = '<div class="slick-slide-wrap '+ _className +'" data-data-index="' + index + '" ' + _fancyBox + '><img data-media-type="' + imageData['mediaType'] + '" data-zoom-image="'+ imageData['full'] +'" src="' + imageData['img'] + '"/></div>';
 
                 self.sliderElement.slick('slickAdd', _slide);
