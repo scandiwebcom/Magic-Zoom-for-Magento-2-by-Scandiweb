@@ -164,6 +164,9 @@ define([
             sliderSettings: {
                 options: {}
             },
+            imagePopup: {
+                options: {}
+            },
             thumbsSettings: {
                 options: {}
             },
@@ -210,17 +213,18 @@ define([
          */
         initSlider: function() {
             var self = this;
+            var imagePopOptions = this.config.imagePopup.options;
 
             this.sliderElement.removeClass('_block-content-loading');
 
             this.sliderElement.addClass(this.GALLERY_CLASS);
             this.sliderElement.slick(this.config.sliderSettings.options);
 
-            if (this.config.sliderSettings.imagePopup) {
+            if (this.config.imagePopup.imagePopupStatus) {
                 if (this.isTouchEnabled) {
-                    self.imageModalPopup('taphold');
+                    self.imageModalPopup('taphold', imagePopOptions);
                 } else {
-                    self.imageModalPopup('click');
+                    self.imageModalPopup('click', imagePopOptions);
                 }
             }
 
@@ -259,10 +263,10 @@ define([
          *
          * @returns {boolean}
          */
-        imageModalPopup: function (event) {
+        imageModalPopup: function (event, config) {
             $(document).on(event, '.slick-current', function(e) {
                 var visibleLinks = $('.slick-slide-wrap:not(.slick-cloned)');
-                $.fancybox.open( visibleLinks, {}, visibleLinks.index( this ) );
+                $.fancybox.open( visibleLinks, config, visibleLinks.index( this ) );
 
                 return false;
             });
@@ -276,7 +280,7 @@ define([
             $.each(this.config.data, function (index, imageData) {
                 var _className = (self.isVideo(imageData)) ? 'slick-video-slide' : '',
                     _hrefLink = (self.isVideo(imageData)) ? imageData['videoUrl'] : imageData['full'],
-                    _fancyBox = (self.config.sliderSettings.imagePopup) ? 'href="' + _hrefLink + '"' : '',
+                    _fancyBox = (self.config.imagePopup.imagePopupStatus) ? 'href="' + _hrefLink + '"' : '',
                     _slide = '<div class="slick-slide-wrap '+ _className +'" data-data-index="' + index + '" ' + _fancyBox + '><img data-media-type="' + imageData['mediaType'] + '" data-zoom-image="'+ imageData['full'] +'" src="' + imageData['img'] + '"/></div>';
 
                 self.sliderElement.slick('slickAdd', _slide);
@@ -465,7 +469,7 @@ define([
                 '" data-width="100%" data-height="100%"></div>'
             );
 
-            if (!this.config.sliderSettings.imagePopup) {
+            if (!this.config.imagePopup.imagePopupStatus) {
                 this.setVideoEvents(currentSlide);
             }
         },
