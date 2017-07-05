@@ -264,7 +264,7 @@ define([
          * @returns {boolean}
          */
         imageModalPopup: function (event, config) {
-            $(document).on(event, '.slick-current', function(e) {
+            $(document).on(event, '.slick-slide-wrap.slick-current', function(e) {
                 var visibleLinks = $('.slick-slide-wrap:not(.slick-cloned)');
                 $.fancybox.open( visibleLinks, config, visibleLinks.index( this ) );
 
