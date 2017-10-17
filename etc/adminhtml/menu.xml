@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Scandi_MagicZoom
+ *
+ * @category    Scandiweb
+ * @package     Scandi_MagicZoom
+ * @author      Raivis Dejus <info@scandiweb.com>
+ * @copyright   Copyright (c) 2017 Scandiweb, Ltd (https://scandiweb.com)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Scandi_MagicZoom::menu_label" title="Magic Zoom" module="Scandi_MagicZoom" sortOrder="10" parent="Scandiweb_Core::all" resource="Scandi_MagicZoom::config_scandi_magiczoom"/>
+        <add id="Scandi_MagicZoom::extension_config" title="Configuration" module="Scandi_MagicZoom" sortOrder="10" parent="Scandi_MagicZoom::menu_label" action="adminhtml/system_config/edit/section/scandi_magiczoom" dependsOnModule="Scandiweb_Core" resource="Scandi_MagicZoom::config_scandi_magiczoom"/>
+    </menu>
+</config>

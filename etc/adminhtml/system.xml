@@ -7,12 +7,9 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <tab id="scandi" translate="label" sortOrder="500">
-            <label>Scandi</label>
-        </tab>
         <section id="scandi_magiczoom" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>MagicZoom</label>
-            <tab>scandi</tab>
+            <tab>scandiweb</tab>
             <resource>Scandi_MagicZoom::config_scandi_magiczoom</resource>
             <group id="slider_settings" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Slider Settings</label>
