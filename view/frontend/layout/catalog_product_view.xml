@@ -7,10 +7,10 @@
 -->
 <page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
-        <css src="Scandi_MagicZoom/lib/slick/slick.css"/>
-        <css src="Scandi_MagicZoom/lib/slick/slick-theme.css"/>
-        <css src="Scandi_MagicZoom/lib/fancybox/jquery.fancybox.css"/>
-        <css src="Scandi_MagicZoom/css/gallery.css"/>
+        <css src="Scandi_MagicZoom::lib/slick/slick.css"/>
+        <css src="Scandi_MagicZoom::lib/slick/slick-theme.css"/>
+        <css src="Scandi_MagicZoom::lib/fancybox/jquery.fancybox.css"/>
+        <css src="Scandi_MagicZoom::css/gallery.css"/>
     </head>
     <body>
         <referenceBlock name="product.info.media.image" remove="true"/>
